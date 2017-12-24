@@ -4,7 +4,7 @@
   function fetchLocation() {
     let cityName = document.querySelector(".city");
     let api = "https://api.openweathermap.org/data/2.5/weather?q=";
-    let units = "&units=metric&APPID=a3c1886f5eb76ddfb52f47c56366e0e3"
+    let units = "&units=metric&APPID=YOURAPIKEY"
     let url;
     url = api + cityName.value + units;
     if (cityName != '') {
