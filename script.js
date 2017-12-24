@@ -1,10 +1,11 @@
   let lati = 0;
   let longi = 0;
+  let cityName = '';
 
   function fetchLocation() {
-    let cityName = document.querySelector(".city");
+    cityName = document.querySelector(".city");
     let api = "https://api.openweathermap.org/data/2.5/weather?q=";
-    let units = "&units=metric&APPID=YOURAPIKEY"
+    let units = "&units=metric&APPID=a3c1886f5eb76ddfb52f47c56366e0e3"
     let url;
     url = api + cityName.value + units;
     if (cityName != '') {
@@ -17,7 +18,7 @@
         })
         .catch(err => console.log(err));
     }
-   }
+  }
 
   function initMap() {
     let zoom = document.querySelector('.zoom');
@@ -44,9 +45,19 @@
       zoom: Number(zoom.value),
       center: uluru
     });
+
+    var contentString = `<h3>${cityName.value}</h3>`;
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
     var marker = new google.maps.Marker({
       position: uluru,
       map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
     });
 
   }
