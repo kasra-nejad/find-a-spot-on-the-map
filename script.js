@@ -13,11 +13,11 @@
         .then(data => {
           lati = data.coord.lat;
           longi = data.coord.lon;
+          initMap();
         })
         .catch(err => console.log(err));
     }
-    initMap();
-  }
+   }
 
   function initMap() {
     let zoom = document.querySelector('.zoom');
